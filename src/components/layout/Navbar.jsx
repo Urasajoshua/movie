@@ -101,13 +101,7 @@ const Navbar = () => {
           >
             Films
           </Link>
-          <Link
-            to="/actors"
-            className="block px-4 py-3 text-white hover:bg-blue-700 transition duration-300"
-            onClick={() => setIsOpen(false)}
-          >
-            Actors
-          </Link>
+          
           <div className="px-4 py-3">
             {/* Search Bar on mobile */}
             <div className="relative flex items-center mb-4">
