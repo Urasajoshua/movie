@@ -109,7 +109,7 @@ const MovieDetailScreen = () => {
               </div>
               <div className='flex items-center gap-2 md:gap-4 border-2 md:border-gray-50 rounded-lg px-4 py-1 md:py-2'>
                 <FaBookmark color='green'/>
-                <h2 className='text-black md:text-white'>Add to watchlist</h2>
+                <h2 className='text-white md:text-white'>Add to watchlist</h2>
               </div>
             </div>
 
