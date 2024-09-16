@@ -58,7 +58,7 @@ const HomeScreen = () => {
       </div>
 
     
-      <section className="mb-8">
+      <section className="mb-4">
         <h2 className="text-xl font-semibold text-gray-900 mb-6 pb-2">Trending Movies</h2>
         {loadingTrending ? (
           <Loading />
@@ -84,7 +84,7 @@ const HomeScreen = () => {
       <Parterns />
 
       
-      <section className="mb-12">
+      <section className="mb-4">
         <h2 className="text-xl font-semibold text-gray-900 mb-6 pb-2">Popular Movies of the Week</h2>
         {loadingPopular ? (
           <Loading />
@@ -108,7 +108,7 @@ const HomeScreen = () => {
       </section>
 
       
-      <section className="mb-12">
+      <section className="mb-4">
         <h2 className="text-xl font-semibold text-gray-900 mb-6 pb-2">Series</h2>
         {loadingSeries ? (
           <Loading />
@@ -132,7 +132,7 @@ const HomeScreen = () => {
       </section>
 
       
-      <section className="mb-12">
+      <section className="mb-4">
         <h2 className="text-xl font-semibold text-gray-900 mb-6 pb-2">Movies on Awards</h2>
         {loadingAward ? (
           <Loading />
