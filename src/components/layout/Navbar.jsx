@@ -1,15 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { FaSearch, FaBell, FaUser } from "react-icons/fa"; 
+import { FaSearch, FaBell, FaUser } from "react-icons/fa";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
+  
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 100) { 
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <nav className="bg-gray-950 text-white fixed top-0 left-0 w-full z-50">
+    <nav className={`fixed top-0 left-0 w-full z-50 transition-colors duration-300 ${isScrolled ? 'bg-gray-950' : 'bg-gray-950 bg-opacity-5'} text-white`}>
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <div className="text-3xl font-bold">
           <Link to="/" className="hover:text-gray-300">
@@ -19,9 +37,6 @@ const Navbar = () => {
         <div className="hidden md:flex items-center space-x-8">
           <Link to="/" className="hover:text-gray-300 transition duration-300">Home</Link>
           <Link to="/films" className="hover:text-gray-300 transition duration-300">Films</Link>
-          <Link></Link>
-          <Link></Link>
-          <Link></Link>
           {/* Search Bar on larger screens */}
           <div className="relative flex items-center">
             <input
@@ -31,19 +46,6 @@ const Navbar = () => {
             />
             <FaSearch className="absolute left-3 text-gray-400" />
           </div>
-          {/* Login/Signup Buttons */}
-          {/* <Link
-            to="/login"
-            className="bg-blue-600 px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300"
-          >
-            Login
-          </Link>
-          <Link
-            to="/signup"
-            className="bg-green-600 px-4 py-2 rounded-lg hover:bg-green-700 transition duration-300"
-          >
-            Signup
-          </Link> */}
           {/* Notifications Icon */}
           <button className="relative flex items-center">
             <FaBell className="text-white text-xl" />
@@ -112,21 +114,6 @@ const Navbar = () => {
               />
               <FaSearch className="absolute left-3 text-gray-400" />
             </div>
-            {/* Login/Signup Buttons */}
-            {/* <Link
-              to="/login"
-              className="block bg-blue-600 px-4 py-2 rounded-lg mb-2 text-center hover:bg-blue-700 transition duration-300"
-              onClick={() => setIsOpen(false)}
-            >
-              Login
-            </Link>
-            <Link
-              to="/signup"
-              className="block bg-green-600 px-4 py-2 rounded-lg text-center hover:bg-green-700 transition duration-300"
-              onClick={() => setIsOpen(false)}
-            >
-              Signup
-            </Link> */}
           </div>
         </motion.div>
       )}

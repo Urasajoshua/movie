@@ -72,7 +72,6 @@ const MovieDetailScreen = () => {
   animate={{ opacity: 1, x: 0 }}
   exit={{ opacity: 0, x: 100 }}
   transition={{ ease: "easeInOut", duration: 0.5 }} className="relative">
-      {/* Backdrop Image */}
       <div
         className="absolute inset-0 -z-10 w-full h-[100vh] bg-cover bg-center"
         style={{ backgroundImage: `url(${backdropUrl})` }}
@@ -80,11 +79,9 @@ const MovieDetailScreen = () => {
         <div className="w-full h-full bg-gradient-to-t from-black via-black to-transparent"></div>
       </div>
 
-      {/* Main Content */}
-      <div className="container mx-auto py-6 px-4 mt-16">
+      <div className="container mx-auto py-6 px-4">
         <div className="flex flex-col md:flex-row items-start md:space-x-8">
-          {/* Movie Information */}
-          <div className="flex-1 mb-6 md:mb-0">
+          <div className="flex-1 mb-6 md:mb-0 mt-16">
             <h1 className="text-2xl font-extrabold mb-4 text-white">{title}</h1>
             <p className="text-lg mb-4 text-gray-300">{release_date}</p>
             <p className="mb-4 text-gray-300 leading-relaxed">{overview}</p>
@@ -113,7 +110,6 @@ const MovieDetailScreen = () => {
               </div>
             </div>
 
-            {/* Cast */}
             <div className="mt-6 md:mt-52">
               <h2 className="text-xl font-semibold mb-4 text-black">Cast</h2>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
@@ -140,8 +136,8 @@ const MovieDetailScreen = () => {
             </div>
           </div>
 
-          {/* Trailer and Poster */}
-          <div className="flex-shrink-0 md:w-[300px]">
+      
+          <div className="flex-shrink-0 md:w-[300px] mt-16">
             {trailerKey && (
               <div className="relative mb-6">
                 <h2 className="text-2xl font-semibold mb-4 text-white">Watch Trailer</h2>
@@ -157,7 +153,7 @@ const MovieDetailScreen = () => {
               </div>
             )}
             
-            {/* Poster */}
+    
             <img
               src={posterUrl}
               alt={title}
