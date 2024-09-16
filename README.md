@@ -69,6 +69,11 @@ Here is a brief overview of the project structure:
    - **Installation**: `npm install react-router-dom`
    - **Usage**: Used for navigating between different pages in the application.
 
+8. **react-toastify**: Provides alert functionality in React applications.
+   - **Installation**: `npm install react-toastify`
+   - **Usage**:
+
+
 ## Issues and Bugs Encountered
 
 ### Issues

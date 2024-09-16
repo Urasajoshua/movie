@@ -3,9 +3,11 @@ import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Error from '../components/common/Error';
 import Loading from '../components/common/Loading';
-import { FaPlay ,FaBookmark} from "react-icons/fa";
+import { FaPlay, FaBookmark } from "react-icons/fa";
 import { motion } from 'framer-motion';
 import { pageVariants, pageTransition } from '../utils/motionConfig';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'; 
 
 const API_KEY = import.meta.env.VITE_API_KEY;
 const BASE_URL = 'https://api.themoviedb.org/3';
@@ -66,12 +68,22 @@ const MovieDetailScreen = () => {
     navigate(`/actor/${actorId}`);
   };
 
+  const handleStreamingClick = () => {
+    toast.info("This is coming soon.");
+  };
+
+  const handleWatchlistClick = () => {
+    toast.success("Added to watchlist.");
+  };
+
   return (
-    <motion.div 
-    initial={{ opacity: 0, x: -100 }}
-  animate={{ opacity: 1, x: 0 }}
-  exit={{ opacity: 0, x: 100 }}
-  transition={{ ease: "easeInOut", duration: 0.5 }} className="relative">
+    <motion.div
+      initial={{ opacity: 0, x: -100 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: 100 }}
+      transition={{ ease: "easeInOut", duration: 0.5 }}
+      className="relative"
+    >
       <div
         className="absolute inset-0 -z-10 w-full h-[100vh] bg-cover bg-center"
         style={{ backgroundImage: `url(${backdropUrl})` }}
@@ -79,7 +91,7 @@ const MovieDetailScreen = () => {
         <div className="w-full h-full bg-gradient-to-t from-black via-black to-transparent"></div>
       </div>
 
-      <div className="container mx-auto py-6 px-4">
+      <div className="container mx-auto py-6 px-4 relative z-10">
         <div className="flex flex-col md:flex-row items-start md:space-x-8">
           <div className="flex-1 mb-6 md:mb-0 mt-16">
             <h1 className="text-2xl font-extrabold mb-4 text-white">{title}</h1>
@@ -98,15 +110,21 @@ const MovieDetailScreen = () => {
               <p className="text-lg font-semibold">Rating:</p>
               <p className="text-yellow-400 text-xl">{vote_average}/10</p>
             </div>
-            
-            <div className='flex mt-8 md:mt-0  gap-2 md:gap-4'>
-              <div className='flex items-center gap-2 md:gap-4 bg-green-800 py-1 md:py-2 px-4 rounded-lg'>
-                <FaPlay color='white'/>
+
+            <div className='flex mt-4 md:mt-0 gap-2 md:gap-4'>
+              <div
+                className='flex items-center gap-2 md:gap-4 bg-green-800 py-1 md:py-2 px-4 rounded-lg cursor-pointer'
+                onClick={handleStreamingClick}
+              >
+                <FaPlay color='white' />
                 <h2 className='text-white'>Streaming</h2>
               </div>
-              <div className='flex items-center gap-2 md:gap-4 border-2 md:border-gray-50 rounded-lg px-4 py-1 md:py-2'>
-                <FaBookmark color='green'/>
-                <h2 className='text-white md:text-white'>Add to watchlist</h2>
+              <div
+                className='flex items-center gap-2 md:gap-4 border-2 md:border-gray-50 rounded-lg px-4 py-1 md:py-2 cursor-pointer'
+                onClick={handleWatchlistClick}
+              >
+                <FaBookmark color='green' />
+                <h2 className='text-blue-400 md:text-white'>Add to watchlist</h2>
               </div>
             </div>
 
@@ -136,7 +154,6 @@ const MovieDetailScreen = () => {
             </div>
           </div>
 
-      
           <div className="flex-shrink-0 md:w-[300px] mt-16">
             {trailerKey && (
               <div className="relative mb-6">
@@ -152,8 +169,7 @@ const MovieDetailScreen = () => {
                 </div>
               </div>
             )}
-            
-    
+
             <img
               src={posterUrl}
               alt={title}
@@ -162,6 +178,8 @@ const MovieDetailScreen = () => {
           </div>
         </div>
       </div>
+
+      <ToastContainer /> 
     </motion.div>
   );
 };

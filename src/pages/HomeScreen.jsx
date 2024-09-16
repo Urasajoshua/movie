@@ -35,7 +35,7 @@ const HomeScreen = () => {
       exit="out"
       variants={pageVariants}
       transition={pageTransition}
-      className="container mx-auto py-8 mt-10 px-4"
+      className="container mx-auto py-8  px-4"
     >
       
       <video
