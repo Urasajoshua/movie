@@ -15,7 +15,7 @@ const ActorScreen = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
-  // Fetch actor details by ID
+  
   useEffect(() => {
     const fetchActorDetails = async () => {
       try {
@@ -48,7 +48,7 @@ const ActorScreen = () => {
     place_of_birth,
   } = actor;
 
-  // Actor Image URL
+
   const actorImageUrl = profile_path
     ? `https://image.tmdb.org/t/p/w500${profile_path}`
     : "https://via.placeholder.com/185x278.png?text=No+Image";
@@ -62,7 +62,7 @@ const ActorScreen = () => {
       transition={pageTransition}
       className="relative text-white"
     >
-      {/* Background Image */}
+      
       <div
         className="absolute inset-0 -z-10 bg-cover bg-center"
         style={{ backgroundImage: `url(${actorImageUrl})` }}
@@ -70,10 +70,10 @@ const ActorScreen = () => {
         <div className="w-full h-full bg-gradient-to-t from-black to-transparent"></div>
       </div>
 
-      {/* Main Content */}
+      
       <div className="container mx-auto py-6 px-4 mt-22">
         <div className="flex flex-col md:flex-row items-start mt-14">
-          {/* Actor Image */}
+        
           <div className="w-full md:w-1/3 lg:w-1/4 mt-8">
             <img
               src={actorImageUrl}
@@ -82,7 +82,6 @@ const ActorScreen = () => {
             />
           </div>
 
-          {/* Actor Details */}
           <div className="md:ml-6 flex-1 mt-8">
             <h1 className="text-4xl md:text-5xl font-extrabold mb-2">{name}</h1>
             <p className="text-xl text-gray-400 mb-4">{known_for_department}</p>

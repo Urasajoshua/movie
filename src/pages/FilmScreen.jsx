@@ -4,7 +4,6 @@ import Loading from '../components/common/Loading';
 import Error from '../components/common/Error';
 import MovieCard from '../components/ui/MovieCard';
 import { motion } from 'framer-motion';
-import { pageVariants, pageTransition } from '../utils/motionConfig';
 import { Link } from 'react-router-dom';
 
 const API_KEY = import.meta.env.VITE_API_KEY;
@@ -31,19 +30,17 @@ const FilmScreen = () => {
             alt="Hero" 
             className="w-full h-56 md:h-96 object-cover object-center"
           />
-          <div className="absolute inset-0"></div>
+          <div className="absolute inset-0 text-gray-900"></div>
         </div>
-        <div className="relative container mx-auto py-6 px-4 text-center text-black">
-          <h1 className="text-3xl md:text-5xl font-extrabold mb-4 mt-12">{films?.results[0]?.title}</h1>
-          <p className="text-sm md:text-lg mb-6">{films?.results[0]?.overview}</p>
+        <div className="relative container mx-auto py-6 px-4 text-center text-white">
+          <h1 className="text-3xl md:text-5xl font-extrabold  mt-12">{films?.results[0]?.title}</h1>
+          <p className="text-sm md:text-lg ">{films?.results[0]?.overview}</p>
         </div>
       </section>
 
-      
       <section className="mb-12 px-4">
         <h2 className="text-xl font-semibold text-gray-900 mb-6">Genres & Categories</h2>
         <div className="flex flex-wrap gap-4 md:gap-6">
-  
           <div className="bg-blue-100 text-blue-800 p-3 md:p-4 rounded-lg shadow-md flex-1">
             <h3 className="text-lg md:text-xl font-semibold mb-2">Action</h3>
             <p className="text-xs md:text-sm">Explore the latest action-packed films!</p>
@@ -55,12 +52,11 @@ const FilmScreen = () => {
         </div>
       </section>
 
-    
       <section className="px-4">
         <h2 className="text-xl font-semibold text-gray-900 mb-6">Browse Popular Films</h2>
-        <div className="flex flex-wrap gap-4 overflow-x-auto scrollbar-hidden">
+        <div className="flex flex-col md:flex-row  overflow-x-auto gap-4 pb-2 scrollbar-hidden">
           {films?.results.map(film => (
-            <Link to={`/movies/${film.id}`} key={film.id} className="flex-shrink-0 w-36 md:w-48 lg:w-64">
+            <Link to={`/movies/${film.id}`} key={film.id} className="flex-shrink-0 w-36 sm:w-48 md:w-64 lg:w-80">
               <MovieCard 
                 id={film.id}
                 title={film.title}
